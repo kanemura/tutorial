@@ -1,19 +1,17 @@
+MAIN	=main
+SUB	=sub
+
 .PHONY:clean
+all:$(MAIN)
+
+./bin/$(MAIN).o: ./src/$(MAIN).c
+	gcc -c $< -o $@
+
+./bin/$(SUB).o:./src/$(SUB).c
+	gcc -c $< -o $@
+
+$(MAIN): ./bin/$(MAIN).o ./bin/$(SUB).o
+	gcc ./bin/$(MAIN).o ./bin/$(SUB).o -o $@
+
 clean:
-	rm a.out-f
-
-a.out: *.c
-	gcc *.c -o $@
-
-
-
-#all: $(MAIN)
-
-#.c.o: gcc -c $<
-
-#$(MAIN).o: $(MAIN).c
-#	gcc -c $(MAIN).c -o $(MAIN).o
-
-#$(MAIN): $(MAIN).o
-#	gcc $(MAIN).o -o $(MAIN) 
-
+	rm $(MAIN) ./bin/$(MAIN).o ./bin/$(SUB).o

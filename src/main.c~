@@ -1,0 +1,7 @@
+#include "../include/sub.h"
+
+int main(void)
+{
+  jm();
+  return 0;
+}
